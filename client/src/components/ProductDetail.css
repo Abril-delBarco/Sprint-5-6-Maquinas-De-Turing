@@ -1,0 +1,31 @@
+/* Detalle de producto — Martín Ortega
+   Solo lo que no cubre el sistema de diseño de App.css. */
+
+/* El "volver" es un button por accesibilidad (no navega a ninguna URL),
+   así que hay que sacarle el marco nativo para que se lea como un enlace. */
+.detalle-volver {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--fuente-texto);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-texto);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transicion);
+}
+
+.detalle-volver:hover {
+  color: var(--color-terracota);
+}
+
+/* La insignia de categoría es inline-flex y se estira si la deja el contenedor. */
+.detalle-producto__info .insignia {
+  align-self: flex-start;
+}
