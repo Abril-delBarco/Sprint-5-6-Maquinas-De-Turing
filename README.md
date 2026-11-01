@@ -93,7 +93,7 @@ Además Mongoose agrega `_id`, `createdAt` y `updatedAt`.
 
 | Ruta                     | Contenido                                                    |
 |--------------------------|--------------------------------------------------------------|
-| `/`                      | Inicio                                                       |
+| `/`                      | Inicio, con la colección tomada de la API                    |
 | `/contacto`              | Contacto                                                     |
 | `/productos`             | Catálogo: lista los productos de la API                      |
 | `/productos/:id`         | Detalle de un producto                                       |
@@ -104,7 +104,7 @@ Las imágenes de los productos se cargan con el campo `imagenUrl`. Las del sitio
 `client/public/assets` (por ejemplo, `/assets/sofa-patagonia.webp`).
 
 ## Alcance y limitaciones
-- La portada y el carrito desplegable usan productos de ejemplo, no los de la base de datos.
+- El carrito desplegable guarda los productos solo en memoria: se vacía al recargar la página.
 - No existen las páginas de carrito completo ni de checkout; esos enlaces llevan al 404.
 - No hay despliegue publicado: el proyecto se ejecuta en local.
 

@@ -1,15 +1,22 @@
+import { useNavigate } from "react-router-dom";
 import "./ProductCard.css";
 
-function ProductCard({ producto, onSelect, onAddToCart }) {
+// Tarjeta de la portada. Al hacer click lleva al detalle del producto (/productos/:id)
+function ProductCard({ producto, onAddToCart }) {
+  const navigate = useNavigate();
+
   const handleAddToCart = (e) => {
     e.stopPropagation();
     onAddToCart(producto);
   };
 
   return (
-    <article className="tarjeta-producto" onClick={() => onSelect(producto.id)}>
+    <article
+      className="tarjeta-producto"
+      onClick={() => navigate(`/productos/${encodeURIComponent(producto._id)}`)}
+    >
       <div className="tarjeta-producto__imagen">
-        <img src={producto.imagen} alt={producto.nombre} />
+        <img src={producto.imagenUrl || "/assets/logo.svg"} alt={producto.nombre} />
       </div>
 
       <div className="tarjeta-producto__cabecera">
