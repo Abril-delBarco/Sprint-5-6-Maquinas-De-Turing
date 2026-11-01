@@ -1,31 +1,56 @@
-import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import HomePage from './pages/HomePage';
-import ContactPage from './pages/ContactPage';
-import AdminCreateProductPage from './pages/AdminCreateProductPage'; 
-// import Footer from './components/Footer'; // Descomentalo cuando traigas el Footer
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
 
-function App() {
+// Componentes estructurales
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
+// Páginas / Vistas
+import HomePage from "./pages/HomePage";
+import ContactPage from "./pages/ContactPage";
+import AdminCreateProductPage from "./pages/AdminCreateProductPage";
+import ProductDetail from "./components/ProductDetail"; // o "./pages/ProductDetailPage" si lo moviste
+
+export default function App() {
+  const [carrito, setCarrito] = useState([]);
+
+  const agregarAlCarrito = (producto) => {
+    setCarrito((prevCarrito) => [...prevCarrito, producto]);
+  };
+
   return (
     <div className="layout-app">
-      {/* Pasamos los props que pide tu nuevo Navbar maquetado */}
-      <Navbar cartCount={0} carrito={[]} />
+      {/* Navbar conectado al carrito real */}
+      <Navbar cartCount={carrito.length} carrito={carrito} />
 
-      <main className="contenido-principal">
+      {/* main sin clase contenedor: mantiene la compatibilidad con franjas de ancho completo */}
+      <main>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          {/* Ruta principal: Hero, Cita, Catálogo, Franja y Taller */}
+          <Route
+            path="/"
+            element={<HomePage onAddToCart={agregarAlCarrito} />}
+          />
+
+          {/* Página individual de contacto */}
           <Route path="/contacto" element={<ContactPage />} />
-          <Route path="/admin/crear-producto" element={<AdminCreateProductPage />} />
-          {/* Más adelante podés sumar:
-          <Route path="/coleccion" element={<ColeccionPage />} />
-          <Route path="/productos/:id" element={<DetalleProductoPage />} /> 
-          */}
+
+          {/* Panel de administración */}
+          <Route
+            path="/admin/crear-producto"
+            element={<AdminCreateProductPage />}
+          />
+
+          {/* Detalle de producto por ID en la URL */}
+          <Route
+            path="/productos/:id"
+            element={<ProductDetail onAddToCart={agregarAlCarrito} />}
+          />
         </Routes>
       </main>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
-
-export default App;

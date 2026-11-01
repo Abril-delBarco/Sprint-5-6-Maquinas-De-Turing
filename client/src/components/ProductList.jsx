@@ -1,21 +1,33 @@
-import { useState, useEffect } from "react";
-import { getProductos } from "../services/api";
+import { useState } from "react";
 import ProductCard from "./ProductCard";
 
+// Datos de prueba locales para maquetar
+const PRODUCTOS_MOCK = [
+  {
+    id: 1,
+    nombre: "Sofá Patagonia",
+    precio: 450000,
+    descripcion: "Tapizado en lino natural con estructura de madera maciza.",
+    imagen: "/assets/sofa-patagonia.png",
+  },
+  {
+    id: 2,
+    nombre: "Aparador Uspallata",
+    precio: 380000,
+    descripcion: "Madera recuperada con ensambles artesanales y acabado mate.",
+    imagen: "/assets/aparador-uspallata.png",
+  },
+  {
+    id: 3,
+    nombre: "Mesa Comedor Arrayán",
+    precio: 520000,
+    descripcion: "Tapa maciza de roble con terminación al aceite orgánico.",
+    imagen: "/assets/sofa-patagonia.png",
+  },
+];
+
 function ProductList({ onSelect, onAddToCart }) {
-  const [productos, setProductos] = useState([]);
-  const [cargando, setCargando] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    getProductos()
-      .then(setProductos)
-      .catch((err) => setError(err.message))
-      .finally(() => setCargando(false));
-  }, []);
-
-  if (cargando) return <p>Cargando productos...</p>;
-  if (error) return <p>Error: {error}</p>;
+  const [productos] = useState(PRODUCTOS_MOCK);
 
   return (
     <section className="grilla-productos">
