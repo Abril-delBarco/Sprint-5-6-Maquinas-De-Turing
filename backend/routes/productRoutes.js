@@ -6,7 +6,6 @@ const router = express.Router();
 
 const idValido = (id) => mongoose.Types.ObjectId.isValid(id);
 
-// GET /api/productos - lista completa
 router.get('/', async (req, res) => {
   try {
     const productos = await Product.find();
@@ -16,7 +15,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET /api/productos/:id - producto individual por _id
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -33,7 +31,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// POST /api/productos - crear producto (201)
 router.post('/', async (req, res) => {
   try {
     const producto = await Product.create(req.body);
@@ -46,7 +43,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// PUT /api/productos/:id - actualizar producto
 router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -69,7 +65,6 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE /api/productos/:id - eliminar producto
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
