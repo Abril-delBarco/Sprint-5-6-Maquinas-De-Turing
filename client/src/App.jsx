@@ -2,11 +2,9 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
-// Componentes estructurales
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-
-// Páginas / Vistas
 import HomePage from "./pages/HomePage";
 import ContactPage from "./pages/ContactPage";
 import AdminCreateProductPage from "./pages/AdminCreateProductPage";
