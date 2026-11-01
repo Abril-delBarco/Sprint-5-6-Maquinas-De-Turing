@@ -26,7 +26,7 @@ export default function HomePage({ onAddToCart }) {
 
         <div className="hero__imagen">
           <img
-            src="/assets/sofa-patagonia.png"
+            src="/assets/sofa-patagonia.webp"
             alt="Sofá de tres cuerpos tapizado en lino, de la colección Hermanos Jota"
           />
         </div>
@@ -98,7 +98,7 @@ export default function HomePage({ onAddToCart }) {
         <div className="artesania__grid">
           <div className="artesania__panel">
             <img
-              src="/assets/aparador-uspallata.png"
+              src="/assets/aparador-uspallata.webp"
               alt="Aparador de madera recuperada en el taller"
             />
             <span>Cada pieza pasa por una sola mesa de trabajo.</span>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ProductCard from "./ProductCard";
+import ProductCard from "./HomeProductCard";
 
 // Datos de prueba locales para maquetar
 const PRODUCTOS_MOCK = [
@@ -8,21 +8,21 @@ const PRODUCTOS_MOCK = [
     nombre: "Sofá Patagonia",
     precio: 450000,
     descripcion: "Tapizado en lino natural con estructura de madera maciza.",
-    imagen: "/assets/sofa-patagonia.png",
+    imagen: "/assets/sofa-patagonia.webp",
   },
   {
     id: 2,
     nombre: "Aparador Uspallata",
     precio: 380000,
     descripcion: "Madera recuperada con ensambles artesanales y acabado mate.",
-    imagen: "/assets/aparador-uspallata.png",
+    imagen: "/assets/aparador-uspallata.webp",
   },
   {
     id: 3,
     nombre: "Mesa Comedor Arrayán",
     precio: 520000,
     descripcion: "Tapa maciza de roble con terminación al aceite orgánico.",
-    imagen: "/assets/sofa-patagonia.png",
+    imagen: "/assets/sofa-patagonia.webp",
   },
 ];
 

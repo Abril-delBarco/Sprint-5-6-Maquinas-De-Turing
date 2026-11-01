@@ -72,8 +72,8 @@ function ProductForm({ producto }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form className="formulario formulario--admin" onSubmit={handleSubmit}>
+      <div className="campo">
         <label htmlFor="nombre">Nombre</label>
         <input
           id="nombre"
@@ -85,7 +85,7 @@ function ProductForm({ producto }) {
         />
       </div>
 
-      <div>
+      <div className="campo">
         <label htmlFor="descripcion">Descripción</label>
         <textarea
           id="descripcion"
@@ -95,7 +95,7 @@ function ProductForm({ producto }) {
         />
       </div>
 
-      <div>
+      <div className="campo">
         <label htmlFor="precio">Precio</label>
         <input
           id="precio"
@@ -108,7 +108,7 @@ function ProductForm({ producto }) {
         />
       </div>
 
-      <div>
+      <div className="campo">
         <label htmlFor="stock">Stock</label>
         <input
           id="stock"
@@ -120,7 +120,7 @@ function ProductForm({ producto }) {
         />
       </div>
 
-      <div>
+      <div className="campo">
         <label htmlFor="imagenUrl">URL de la imagen</label>
         <input
           id="imagenUrl"
@@ -131,9 +131,9 @@ function ProductForm({ producto }) {
         />
       </div>
 
-      {error && <p role="alert">{error}</p>}
+      {error && <p className="campo__error" role="alert">{error}</p>}
 
-      <button type="submit" disabled={enviando}>
+      <button type="submit" className="boton boton--principal" disabled={enviando}>
         {enviando ? 'Guardando...' : 'Guardar producto'}
       </button>
     </form>
