@@ -59,7 +59,10 @@ export default function App() {
 
           {/* Detalle de producto por ID en la URL */}
           <Route path="/productos" element={<ProductsPage />} />
-          <Route path="/productos/:id" element={<ProductDetailPage />} />
+          <Route
+            path="/productos/:id"
+            element={<ProductDetailPage onAddToCart={agregarAlCarrito} />}
+          />
 
           {/* Cualquier otra URL */}
           <Route path="*" element={<NotFoundPage />} />

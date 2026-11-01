@@ -4,7 +4,7 @@ import { getProductById } from '../services/api';
 import { formatPrice, ProductImage } from '../components/ProductCard';
 import '../styles/products.css';
 
-export default function ProductDetailPage() {
+export default function ProductDetailPage({ onAddToCart }) {
   const { id } = useParams();
   const [result, setResult] = useState({ id: null, product: null, error: null });
   const [loading, setLoading] = useState(true);
@@ -55,6 +55,10 @@ export default function ProductDetailPage() {
               <p className="product-stock">{product.stock > 0
                 ? `Stock disponible: ${product.stock} ${product.stock === 1 ? 'unidad' : 'unidades'}`
                 : 'Sin stock por el momento'}</p>
+              {onAddToCart && product.stock > 0 && (
+                <button type="button" className="boton boton--principal"
+                  onClick={() => onAddToCart(product)}>Agregar al carrito</button>
+              )}
             </div>
           </article>}
     </section>
