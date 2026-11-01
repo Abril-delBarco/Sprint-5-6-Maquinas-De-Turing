@@ -62,6 +62,27 @@ Si se cambia, hay que reiniciar `npm run dev` (Vite lee las variables al arranca
 
 Para generar la versión de producción del cliente: `npm run build` (queda en `client/dist`).
 
+> **Importante:** el backend tiene que estar corriendo **antes** de abrir el sitio. La portada, el
+> catálogo y el detalle piden los productos a la API; si no responde, muestran un mensaje de error
+> en lugar de los productos.
+
+## Primer uso
+
+La base de datos arranca **vacía**, así que la portada y el catálogo muestran
+"Todavía no hay productos". Para cargar productos:
+
+1. Entrar a `http://localhost:5173/admin/crear-producto` (o al link "Crear Producto" del menú).
+2. Completar el formulario. `nombre` y `precio` son obligatorios.
+3. Al guardar, la página redirige al catálogo (`/productos`) y el producto ya aparece también en la portada.
+
+**Imagen del producto (`URL de la imagen`):** se puede usar una URL completa de internet o una de las
+imágenes del sitio, escribiendo la ruta tal cual, por ejemplo `/assets/mesa-comedor-pampa.webp`.
+Las disponibles en `client/public/assets` son: `aparador-uspallata`, `biblioteca-recoleta`,
+`butaca-mendoza`, `escritorio-costa`, `mesa-comedor-pampa`, `mesa-de-centro-araucaria`,
+`mesa-de-noche-aconcagua`, `silla-de-trabajo-belgrano`, `sillas-cordoba`, `sillon-copacabana` y
+`sofa-patagonia` (todas con extensión `.webp`). Si se deja vacío o la imagen no carga, se muestra un
+recuadro de "Imagen no disponible" o el logo del sitio.
+
 ## API
 
 Base: `/api/productos`
@@ -106,6 +127,12 @@ Las imágenes de los productos se cargan con el campo `imagenUrl`. Las del sitio
 ## Alcance y limitaciones
 - El carrito desplegable guarda los productos solo en memoria: se vacía al recargar la página.
 - No existen las páginas de carrito completo ni de checkout; esos enlaces llevan al 404.
+- Desde el sitio solo se pueden **crear** productos. Editar (`PUT`) y eliminar (`DELETE`) se hace
+  únicamente a través de la API (Postman, Thunder Client o cURL). El componente `ProductForm` ya
+  soporta edición, pero no hay una página que lo use.
+- `/admin/crear-producto` no tiene login: cualquier persona que conozca la URL puede crear productos.
+- El formulario de contacto es solo visual: muestra el mensaje de agradecimiento, pero no envía
+  los datos a ningún servidor.
 - No hay despliegue publicado: el proyecto se ejecuta en local.
 
 ## Equipo
