@@ -54,9 +54,10 @@ function ProductForm({ producto }) {
       });
 
       if (!respuesta.ok) {
-        // El backend puede responder { mensaje } o { error: { message } }
+        // El backend responde { mensaje, error: "detalle" } o { error: { message } }
         const info = await respuesta.json().catch(() => null);
-        const mensaje = info?.mensaje || info?.error?.message;
+        const detalle = typeof info?.error === 'string' ? info.error : info?.error?.message;
+        const mensaje = [info?.mensaje, detalle].filter(Boolean).join(': ');
         setError(mensaje || 'No se pudo guardar el producto.');
         setEnviando(false);
         return;
