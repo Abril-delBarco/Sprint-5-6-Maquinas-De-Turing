@@ -1,0 +1,44 @@
+/* Tarjeta del catálogo — complementa el sistema de diseño de App.css.
+   App.css define el aspecto de .tarjeta-producto; acá solo va el feedback
+   de que la tarjeta entera es clickeable, que en el HTML original lo daba
+   el <a> que la envolvía. */
+
+.tarjeta-producto {
+  cursor: pointer;
+  transition: transform var(--transicion);
+}
+
+.tarjeta-producto:hover {
+  transform: translateY(-4px);
+}
+
+.tarjeta-producto:hover .tarjeta-producto__nombre {
+  color: var(--color-terracota);
+}
+
+/* El marco de la imagen tiene aspect-ratio 4/3 en App.css, pero las fotos del
+   catalogo vienen con proporciones muy distintas (800x533 y 800x1201 conviven)
+   y su alto intrinseco termina mandando sobre el aspect-ratio. Resultado: los
+   marcos miden distinto y los nombres de los productos no alinean entre
+   tarjetas. Haciendo que la foto llene el marco, el alto lo fija el
+   aspect-ratio y object-fit evita cualquier deformacion. */
+.tarjeta-producto__imagen {
+  flex-shrink: 0;
+  aspect-ratio: auto;
+  height: 220px;
+}
+
+/* Con el marco en alto fijo, el max-height en porcentaje ya resuelve contra un
+   valor concreto y la foto nunca lo empuja. El centrado lo da el flex del
+   marco, que ya esta en App.css. */
+.tarjeta-producto__imagen img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Empuja el boton al pie para que quede alineado en toda la fila. */
+.tarjeta-producto .boton {
+  margin-top: auto;
+}
