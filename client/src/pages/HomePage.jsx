@@ -1,6 +1,14 @@
-// src/pages/HomePage.jsx
-import ProductList from "../components/ProductList";
-import ContactForm from "../components/ContactForm";
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+const PRODUCTOS_PRUEBA = [
+  { id: '1', nombre: 'Remera Turing Clásica', precio: 18000, imagen: '/assets/default-product.png' },
+  { id: '2', nombre: 'Buzo con Capucha Turing', precio: 35000, imagen: '/assets/default-product.png' },
+  { id: '3', nombre: 'Gorra Estilo Retro', precio: 12000, imagen: '/assets/default-product.png' }
+];
+
+
+
 
 export default function HomePage({ onAddToCart }) {
   return (

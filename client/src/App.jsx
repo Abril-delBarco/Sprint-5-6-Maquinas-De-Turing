@@ -8,7 +8,8 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import ContactPage from "./pages/ContactPage";
 import AdminCreateProductPage from "./pages/AdminCreateProductPage";
-import ProductDetail from "./components/ProductDetail"; // o "./pages/ProductDetailPage" si lo moviste
+import ProductDetail from "./components/ProductDetail"; 
+
 
 export default function App() {
   const [carrito, setCarrito] = useState([]);
