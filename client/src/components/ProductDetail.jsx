@@ -8,15 +8,14 @@ function ProductDetail({ id, onBack, onAddToCart }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    setCargando(true);
-    setError(null);
-
-    getProductoPorId(id)
-      .then(setProducto)
-      .catch((err) => setError(err.message))
-      .finally(() => setCargando(false));
-  }, [id]);
+  fetch(`/api/productos/${id}`) // o tu URL base de la API
+    .then((res) => res.json())
+    .then((data) => {
+      const productoAdaptado = normalizarProducto(data);
+      setProducto(productoAdaptado);
+    })
+    .catch((err) => console.error("Error al cargar detalle:", err));
+}, [id]);
 
   if (cargando) {
     return (
@@ -107,3 +106,11 @@ function ProductDetail({ id, onBack, onAddToCart }) {
 }
 
 export default ProductDetail;
+export const normalizarProducto = (item) => ({
+  id: item._id || item.id,
+  nombre: item.nombre || item.title || 'Producto sin nombre',
+  precio: item.precio || item.price || 0,
+  descripcion: item.descripcion || item.description || '',
+  categoria: item.categoria || item.category || 'General',
+  imagen: item.imagen || item.image || '/assets/default-product.png'
+});

@@ -46,6 +46,8 @@ export default function App() {
             element={<ProductDetail onAddToCart={agregarAlCarrito} />}
           />
         </Routes>
+
+        
       </main>
 
       <Footer />
