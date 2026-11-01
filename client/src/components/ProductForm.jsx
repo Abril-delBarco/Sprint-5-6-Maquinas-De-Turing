@@ -65,7 +65,7 @@ function ProductForm({ producto }) {
 
       // Guardado OK: redirige al catálogo
       navigate('/productos');
-    } catch (err) {
+    } catch {
       setError('No pudimos conectar con el servidor. Intentá nuevamente.');
       setEnviando(false);
     }

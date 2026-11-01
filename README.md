@@ -94,7 +94,7 @@ Además Mongoose agrega `_id`, `createdAt` y `updatedAt`.
 | Ruta                     | Contenido                                                    |
 |--------------------------|--------------------------------------------------------------|
 | `/`                      | Inicio, con la colección tomada de la API                    |
-| `/contacto`              | Contacto                                                     |
+| `/contacto`              | Formulario de contacto                                       |
 | `/productos`             | Catálogo: lista los productos de la API                      |
 | `/productos/:id`         | Detalle de un producto                                       |
 | `/admin/crear-producto`  | Formulario de alta; al guardar redirige a `/productos`       |

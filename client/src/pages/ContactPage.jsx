@@ -1,7 +1,6 @@
+import ContactForm from "../components/ContactForm";
+
+// Página /contacto: muestra el formulario de contacto
 export default function ContactPage() {
-  return (
-    <div>
-      <h1>Contacto</h1>
-    </div>
-  );
+  return <ContactForm />;
 }
