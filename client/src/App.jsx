@@ -17,14 +17,27 @@ import NotFoundPage from "./pages/NotFoundPage";
 export default function App() {
   const [carrito, setCarrito] = useState([]);
 
+  // Si el producto ya está en el carrito suma una unidad en lugar de repetirlo
   const agregarAlCarrito = (producto) => {
-    setCarrito((prevCarrito) => [...prevCarrito, producto]);
+    setCarrito((prevCarrito) => {
+      const existe = prevCarrito.some((item) => item._id === producto._id);
+      if (existe) {
+        return prevCarrito.map((item) =>
+          item._id === producto._id
+            ? { ...item, cantidad: (item.cantidad || 1) + 1 }
+            : item
+        );
+      }
+      return [...prevCarrito, { ...producto, cantidad: 1 }];
+    });
   };
+
+  const cantidadTotal = carrito.reduce((acum, item) => acum + (item.cantidad || 1), 0);
 
   return (
     <div className="layout-app">
       {/* Navbar conectado al carrito real */}
-      <Navbar cartCount={carrito.length} carrito={carrito} />
+      <Navbar cartCount={cantidadTotal} carrito={carrito} />
 
       {/* main sin clase contenedor: mantiene la compatibilidad con franjas de ancho completo */}
       <main>
