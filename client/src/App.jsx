@@ -12,6 +12,7 @@ import ContactPage from "./pages/ContactPage";
 import AdminCreateProductPage from "./pages/AdminCreateProductPage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 export default function App() {
   const [carrito, setCarrito] = useState([]);
@@ -46,6 +47,9 @@ export default function App() {
           {/* Detalle de producto por ID en la URL */}
           <Route path="/productos" element={<ProductsPage />} />
           <Route path="/productos/:id" element={<ProductDetailPage />} />
+
+          {/* Cualquier otra URL */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
 
