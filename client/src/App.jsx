@@ -10,7 +10,8 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import ContactPage from "./pages/ContactPage";
 import AdminCreateProductPage from "./pages/AdminCreateProductPage";
-import ProductDetail from "./components/ProductDetail"; // o "./pages/ProductDetailPage" si lo moviste
+import ProductsPage from "./pages/ProductsPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
 
 export default function App() {
   const [carrito, setCarrito] = useState([]);
@@ -43,10 +44,8 @@ export default function App() {
           />
 
           {/* Detalle de producto por ID en la URL */}
-          <Route
-            path="/productos/:id"
-            element={<ProductDetail onAddToCart={agregarAlCarrito} />}
-          />
+          <Route path="/productos" element={<ProductsPage />} />
+          <Route path="/productos/:id" element={<ProductDetailPage />} />
         </Routes>
       </main>
 

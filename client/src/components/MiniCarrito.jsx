@@ -11,7 +11,7 @@ export default function MiniCarrito({ carrito = [], abierto = false, onCerrar })
 
   return (
     <aside
-      className="mini-carrito"
+      className="mini-carrito mini-carrito--abierto"
       id="mini-carrito"
       role="dialog"
       aria-label="Resumen del carrito de compras"
@@ -38,7 +38,7 @@ export default function MiniCarrito({ carrito = [], abierto = false, onCerrar })
             {carrito.map((item) => (
               <li key={item.id} className="mini-carrito__item">
                 <img
-                  src={item.imagen || "/assets/placeholder.png"}
+                  src={item.imagen || "/assets/logo.svg"}
                   alt={item.nombre}
                   className="mini-carrito__item-img"
                 />
@@ -77,7 +77,7 @@ export default function MiniCarrito({ carrito = [], abierto = false, onCerrar })
             {/* Navegación al Checkout */}
             <Link
               to="/checkout"
-              className="boton boton--primario mini-carrito__btn-checkout"
+              className="boton boton--principal mini-carrito__btn-checkout"
               onClick={onCerrar}
             >
               Finalizar compra

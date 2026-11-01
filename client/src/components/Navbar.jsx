@@ -51,7 +51,7 @@ export default function Navbar({ cartCount = 0, carrito = [] }) {
             </li>
             <li>
               <NavLink
-                to="/coleccion"
+                to="/productos"
                 className={({ isActive }) => (isActive ? "activo" : undefined)}
                 onClick={cerrarMenu}
               >

@@ -3,8 +3,9 @@ import ProductForm from '../components/ProductForm';
 // Página /admin/crear-producto: muestra el formulario de alta
 function AdminCreateProductPage() {
   return (
-    <section>
-      <h1>Crear producto</h1>
+    <section className="contenedor catalogo-encabezado">
+      <span className="ojo-seccion">Panel de administración</span>
+      <h1 className="titulo-seccion">Crear producto</h1>
       <ProductForm />
     </section>
   );
