@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import ProductList from '../components/ProductList';
+import ContactForm from "../components/ContactForm";
 const PRODUCTOS_PRUEBA = [
   { id: '1', nombre: 'Remera Turing Clásica', precio: 18000, imagen: '/assets/default-product.png' },
   { id: '2', nombre: 'Buzo con Capucha Turing', precio: 35000, imagen: '/assets/default-product.png' },

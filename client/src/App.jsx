@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
+
 
 
 import Navbar from "./components/Navbar";
@@ -9,49 +9,37 @@ import HomePage from "./pages/HomePage";
 import ContactPage from "./pages/ContactPage";
 import AdminCreateProductPage from "./pages/AdminCreateProductPage";
 import ProductDetail from "./components/ProductDetail"; 
-
+import ProductsPage from "./pages/ProductsPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
+import "./App.css";
 
 export default function App() {
-  const [carrito, setCarrito] = useState([]);
-
-  const agregarAlCarrito = (producto) => {
-    setCarrito((prevCarrito) => [...prevCarrito, producto]);
-  };
-
   return (
     <div className="layout-app">
-      {/* Navbar conectado al carrito real */}
-      <Navbar cartCount={carrito.length} carrito={carrito} />
+      {/* Navbar con to="/productos" */}
+      <Navbar cartCount={0} carrito={[]} />
 
-      {/* main sin clase contenedor: mantiene la compatibilidad con franjas de ancho completo */}
-      <main>
+      {/* Contenido enrutado */}
+      <main className="contenedor">
         <Routes>
-          {/* Ruta principal: Hero, Cita, Catálogo, Franja y Taller */}
-          <Route
-            path="/"
-            element={<HomePage onAddToCart={agregarAlCarrito} />}
-          />
-
-          {/* Página individual de contacto */}
-          <Route path="/contacto" element={<ContactPage />} />
-
-          {/* Panel de administración */}
-          <Route
-            path="/admin/crear-producto"
-            element={<AdminCreateProductPage />}
-          />
-
-          {/* Detalle de producto por ID en la URL */}
-          <Route
-            path="/productos/:id"
-            element={<ProductDetail onAddToCart={agregarAlCarrito} />}
-          />
+          <Route path="/" element={<HomePage />} />
+          
+          {/* Ruta que falta registrar para solucionar el warning */}
+          <Route path="/productos" element={<ProductsPage />} />
+          
+          {/* Ruta dinámica para el detalle de cada producto */}
+          <Route path="/productos/:id" element={<ProductDetailPage />} />
+          
+          {/* Ruta de respaldo para páginas no encontradas */}
+          <Route path="*" element={<h2>404 - Página no encontrada</h2>} />
         </Routes>
-
-        
       </main>
 
-      <Footer />
+      <footer className="pie-pagina">
+        <div className="contenedor">
+          <p>© 2026 Hermanos Jota / Máquinas de Turing - Todos los derechos reservados.</p>
+        </div>
+      </footer>
     </div>
   );
 }
